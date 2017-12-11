@@ -78,7 +78,7 @@ class EntityFormDelegateManager extends DefaultPluginManager {
 
       // Sort the definitions after priority.
       uasort($bundleFormAlters, function ($a, $b) {
-        return $a['priority'] <=> $b['priority'];
+        return $a['priority'] < $b['priority'] ? -1 : ($a['priority'] > $b['priority'] ? 1 : 0);
       });
 
       $this->cacheSet($cacheKey, $bundleFormAlters);
